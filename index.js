@@ -13,7 +13,7 @@ const con = mongoose.connection
 con.on('open', function(){
     console.log('connected...')
 })
-// Middleware - json
+// Middleware - because we want to use json
 app.use(express.json())
 
 const alienRouter = require('./routes/aliens')
