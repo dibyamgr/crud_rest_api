@@ -13,6 +13,8 @@ const con = mongoose.connection
 con.on('open', function(){
     console.log('connected...')
 })
+// Middleware - json
+app.use(express.json())
 
 const alienRouter = require('./routes/aliens')
 // middleware
