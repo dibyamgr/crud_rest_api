@@ -26,8 +26,20 @@ router.post('/', async(req, res) => {
        const a1 = await alien.save()
        res.json(a1);
     }catch(err){
-        res.send('Error')
+        res.send('Error' + err)
     }
 })
+
+// Get request from id
+router.get('/:id', async(req, res) => {
+    try{
+        const alien = await Alien.findById(req.params.id) //getting id by url so params
+        res.json(alien)
+    }catch(err){
+        res.send('Error' + err);
+    }
+})
+
+
 
 module.exports = router
