@@ -40,6 +40,31 @@ router.get('/:id', async(req, res) => {
     }
 })
 
+// Patch
+router.patch('/:id', async(req, res) => {
+    try{
+        // fetch a particular data by id
+        const alien = await Alien.findById(req.params.id)
+        //sub status to a new status
+        alien.sub = req.body.sub
+        // save that particular alien
+        const a1 = await alien.save()
+        res.json(a1)
+    }catch(err){
+        res.send('Error' + err)
+    }
+})
 
+router.delete('/:id', async(req, res) => {
+    try{
+        const alien = await Alien.findByIdAndDelete(req.params.id)
+        if(!alien) {
+            return res.status(404).send();
+        }
+        res.json(alien)
+    }catch(err){
+        res.status(500).send('Error' + err)
+    }
+})
 
 module.exports = router
