@@ -13,3 +13,12 @@ const con = mongoose.connection
 con.on('open', function(){
     console.log('connected...')
 })
+
+const alienRouter = require('./routes/aliens')
+// middleware
+app.use('/aliens', alienRouter)
+
+//listen to server
+app.listen(9000, function(){
+    console.log('Server started')
+})
